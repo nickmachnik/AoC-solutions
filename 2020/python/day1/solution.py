@@ -1,16 +1,24 @@
 #!/usr/bin/env python
 
+from itertools import combinations
+
+
 def main():
-    part_one()
-    part_two()
+    data = load_data("puzzleinput.txt")
+    print("Answer part one:", part_one(data))
+    print("Answer part two:", part_two(data))
 
 
-def part_one():
-    pass
+def part_one(data):
+    for a, b in combinations(data, 2):
+        if a + b == 2020:
+            return a * b
 
 
-def part_two():
-    pass
+def part_two(data):
+    for a, b, c in combinations(data, 3):
+        if a + b + c == 2020:
+            return a * b * c
 
 
 def load_data(path):
