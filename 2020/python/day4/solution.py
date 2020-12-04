@@ -11,7 +11,7 @@ key_constraints = {
     'eyr': re.compile('^(202[0-9]|2030)$'),
     'hgt': re.compile('^(1[5-8][0-9]cm|19[0-3]cm|59in|6[0-9]in|7[0-6]in)$'),
     'hcl': re.compile('^#[0-9a-f]{6}$'),
-    'ecl': re.compile('^(amb|blu|brn|gry|grn|hzl)$'),
+    'ecl': re.compile('^(amb|blu|brn|gry|grn|hzl|oth)$'),
     'pid': re.compile('^[0-9]{9}$')
 }
 
