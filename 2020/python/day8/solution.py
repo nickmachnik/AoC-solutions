@@ -47,7 +47,6 @@ def part_one(path):
 
 
 def part_two(path):
-    # let's brute force this first
     jmp_or_nop = []
     comp = BootCodeComputer(path)
     for i, (op, _) in enumerate(comp.instructions):
