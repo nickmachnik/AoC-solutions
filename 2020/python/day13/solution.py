@@ -30,8 +30,8 @@ def part_two(bus_times):
         while (time + offset) % bus_period != 0:
             time += step
         # make step a multiple of the current bus period;
-        # this ensures that all following time increments will also satisfy
-        # the modulo condition.
+        # from now on we will increase time by an amount that ensures
+        # that the offset condition holds.
         step *= bus_period
     return time
 
