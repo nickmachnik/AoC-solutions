@@ -55,16 +55,27 @@ def part_two(path):
     # or n 42 + n 32 rules (by rule 8 and 11).
     # fortunately, it seems that 8 and 11 are the direct prerequisites for 0.
     graph, messages = load_data(path)
+
     resolve_dependencies(graph)
     if not graph[0].is_independent():
         raise RuntimeError
-    p42 = re.compile('^([' + graph[42].data.replace(" ", '') + ']{2,})')
-    p31 = re.compile('([' + graph[31].data.replace(" ", '') + ']+)$')
-    fullp = re.compile(p42.pattern + p31.pattern)
-    print(fullp.pattern)
+
+    graph[11].data = " ( 42 31 | 42 11 31 ) "
+    graph[11].replace_key_in_data(str(42), graph[42].data)
+    graph[11].replace_key_in_data(str(31), graph[31].data)
+    graph[8].data = " ( 42 | 42 8 ) "
+    graph[8].replace_key_in_data(str(42), graph[42].data)
+    for node in [8, 11]:
+        for i in range(4):
+            graph[node].replace_key_in_data(str(node), graph[node].data)
+
+    pattern = re.compile(
+        '^(' + graph[8].data.replace(" ", '')
+        + ')(' + graph[11].data.replace(" ", '') + ')$')
+
     valid = 0
     for message in messages:
-        if re.match(fullp, message) is not None:
+        if re.match(pattern, message) is not None:
             valid += 1
     return valid
 

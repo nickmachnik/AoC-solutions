@@ -14,9 +14,3 @@ def test_part_one():
 def test_part_two():
     assert part_one("test_input2.txt") == 3
     assert part_two("test_input2.txt") == 12
-    # graph, messages = load_data("test_input2.txt")
-    # resolve_dependencies(graph)
-    # print(graph[8].data.replace(' ', ''))
-    # print(graph[11].data.replace(' ', ''))
-    # print(graph[0].data.replace(' ', ''))
-    # assert None is not None
